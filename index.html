@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Catálogo — Guto Productos</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="./assets/css/styles.css">
+</head>
+<body class="min-h-screen">
+  <header class="sticky top-0 z-10 backdrop-blur bg-black/30 border-b border-white/10">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="header-brand text-xl">
+        <span class="text-cyan-400">●</span> Guto <span class="text-slate-400">Catálogo</span>
+      </div>
+      <nav class="text-sm text-slate-300 flex items-center gap-4">
+        <a href="./index.html" class="hover:text-white">Catálogo</a>
+        <a href="./admin.html" class="hover:text-white">Admin</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 py-8">
+    <div class="flex items-center justify-between mb-6">
+      <h1 class="text-2xl font-bold">Productos</h1>
+      <input id="buscar" class="px-3 py-2 rounded-lg bg-white/5 border border-white/10 placeholder-slate-400"
+             placeholder="Buscar por nombre..." />
+    </div>
+
+    <div id="grid" class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5"></div>
+    <p id="vacio" class="text-slate-400 hidden mt-8">Sin productos aún...</p>
+  </main>
+
+  <footer class="py-10 text-center text-xs text-slate-500">
+    Realtime por Firebase — Hecho por Guto ⚡
+  </footer>
+
+  <script type="module" src="./assets/js/catalog.js"></script>
+</body>
+</html>
