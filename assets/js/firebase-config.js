@@ -1,10 +1,11 @@
-// Copia aquí tu config de Firebase Web App.
-// Ve a Firebase Console → Project settings → Your apps → Web app.
+// assets/js/firebase-config.js
 export const firebaseConfig = {
-  apiKey: "TU_API_KEY",
-  authDomain: "TU_PROJECT_ID.firebaseapp.com",
-  projectId: "TU_PROJECT_ID",
-  storageBucket: "TU_PROJECT_ID.appspot.com",
-  messagingSenderId: "000000000000",
-  appId: "1:000000000000:web:xxxxxxxxxxxxxxxxxxxxxx"
+  apiKey: "AIzaSyD-dvFNkQdS_mGlUeA6Dh-PprkriblHNhE",
+  authDomain: "gutoproducto.firebaseapp.com",
+  projectId: "gutoproducto",
+  // OJO: si Storage te da error, cambiá esto a "gutoproducto.appspot.com"
+  storageBucket: "gutoproducto.firebasestorage.app",
+  messagingSenderId: "827696843285",
+  appId: "1:827696843285:web:2448d558f743a626529c1c",
+  measurementId: "G-6E2K2CK5L5"
 };
