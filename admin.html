@@ -1,38 +1,51 @@
-<body class="bg-slate-950 text-slate-100">
-  <main class="min-h-screen flex items-center justify-center">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin — Guto Productos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen bg-slate-950 text-slate-100">
 
+  <main class="min-h-screen flex items-center justify-center p-4">
     <!-- LOGIN -->
-    <section id="secLogin" class="w-full max-w-sm mx-auto p-6 bg-slate-900/90 rounded-2xl border border-white/10 shadow-xl">
-      <h1 class="text-lg font-semibold mb-4 text-center">Panel Guto Productos</h1>
-      
+    <section id="secLogin"
+      class="w-full max-w-sm mx-auto p-6 bg-slate-900/95 rounded-2xl border border-slate-700 shadow-2xl">
+      <h1 class="text-xl font-semibold mb-1 text-center">Panel Guto Productos</h1>
+      <p class="text-[11px] text-slate-400 mb-4 text-center">
+        Iniciá sesión para administrar el catálogo.
+      </p>
+
       <form id="formLogin" class="flex flex-col gap-3">
         <input
           type="email"
           id="emailLogin"
           placeholder="Correo"
-          class="px-3 py-2 rounded-xl bg-slate-950/70 border border-white/15 text-sm"
+          class="px-3 py-2 rounded-xl bg-slate-950/80 border border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
           required
-        >
+        />
         <input
           type="password"
           id="passLogin"
           placeholder="Contraseña"
-          class="px-3 py-2 rounded-xl bg-slate-950/70 border border-white/15 text-sm"
+          class="px-3 py-2 rounded-xl bg-slate-950/80 border border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
           required
-        >
+        />
         <button
           type="submit"
-          class="mt-1 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-semibold text-sm"
+          class="mt-2 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-semibold text-sm transition"
         >
           Ingresar
         </button>
       </form>
     </section>
 
-    <!-- PANEL -->
-    <section id="secPanel" class="hidden w-full max-w-5xl mx-auto px-4 py-6">
+    <!-- PANEL ADMIN (se muestra solo si está logueado) -->
+    <section id="secPanel" class="hidden w-full max-w-5xl mx-auto">
       <div class="flex items-center justify-between mb-4">
-        <h2 class="text-xl font-semibold">Administrar productos</h2>
+        <h2 class="text-2xl font-semibold">Administrar productos</h2>
         <button
           id="btnLogout"
           class="px-3 py-1.5 text-xs rounded-xl bg-red-500/80 hover:bg-red-400 text-white"
@@ -42,53 +55,87 @@
       </div>
 
       <!-- FORM PRODUCTO -->
-      <form id="formProducto" class="grid gap-3 md:grid-cols-2 bg-slate-900/80 p-4 rounded-2xl border border-white/10 mb-4">
-        <input type="hidden" id="docId">
+      <form
+        id="formProducto"
+        class="grid gap-3 md:grid-cols-2 bg-slate-900/95 p-4 rounded-2xl border border-slate-700 mb-4"
+      >
+        <input type="hidden" id="docId" />
 
         <div class="flex flex-col gap-1">
-          <label class="text-xs text-slate-400">Nombre</label>
-          <input id="nombre" required class="px-2 py-1.5 rounded-lg bg-slate-950/80 border border-white/10 text-sm">
+          <label class="text-[11px] text-slate-400">Nombre</label>
+          <input
+            id="nombre"
+            required
+            class="px-2 py-1.5 rounded-lg bg-slate-950/90 border border-slate-700 text-sm focus:outline-none focus:ring-1 focus:ring-emerald-500"
+          />
         </div>
 
         <div class="flex flex-col gap-1">
-          <label class="text-xs text-slate-400">Precio (Gs)</label>
-          <input type="number" id="precio" min="0" class="px-2 py-1.5 rounded-lg bg-slate-950/80 border border-white/10 text-sm">
+          <label class="text-[11px] text-slate-400">Precio (Gs)</label>
+          <input
+            type="number"
+            id="precio"
+            min="0"
+            class="px-2 py-1.5 rounded-lg bg-slate-950/90 border border-slate-700 text-sm focus:outline-none focus:ring-1 focus:ring-emerald-500"
+          />
         </div>
 
         <div class="flex flex-col gap-1">
-          <label class="text-xs text-slate-400">Stock</label>
-          <input type="number" id="stock" min="0" class="px-2 py-1.5 rounded-lg bg-slate-950/80 border border-white/10 text-sm">
+          <label class="text-[11px] text-slate-400">Stock</label>
+          <input
+            type="number"
+            id="stock"
+            min="0"
+            class="px-2 py-1.5 rounded-lg bg-slate-950/90 border border-slate-700 text-sm focus:outline-none focus:ring-1 focus:ring-emerald-500"
+          />
         </div>
 
         <div class="flex flex-col gap-1">
-          <label class="text-xs text-slate-400">Imagen</label>
-          <input type="file" id="fileImagen" accept="image/*" class="text-xs">
+          <label class="text-[11px] text-slate-400">Imagen</label>
+          <input
+            type="file"
+            id="fileImagen"
+            accept="image/*"
+            class="text-[11px] text-slate-300"
+          />
         </div>
 
         <div class="md:col-span-2 flex flex-col gap-1">
-          <label class="text-xs text-slate-400">Descripción</label>
-          <textarea id="descripcion" rows="2" class="px-2 py-1.5 rounded-lg bg-slate-950/80 border border-white/10 text-sm"></textarea>
+          <label class="text-[11px] text-slate-400">Descripción</label>
+          <textarea
+            id="descripcion"
+            rows="2"
+            class="px-2 py-1.5 rounded-lg bg-slate-950/90 border border-slate-700 text-sm focus:outline-none focus:ring-1 focus:ring-emerald-500"
+          ></textarea>
         </div>
 
-        <div class="md:col-span-2 flex gap-2 justify-end">
-          <button type="submit" class="px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black text-sm font-semibold">
+        <div class="md:col-span-2 flex justify-end">
+          <button
+            type="submit"
+            class="px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black text-sm font-semibold"
+          >
             Guardar producto
           </button>
         </div>
       </form>
 
-      <!-- BUSCADOR + GRID -->
+      <!-- BUSCADOR -->
       <input
         type="text"
         id="buscarAdmin"
         placeholder="Buscar producto"
-        class="w-full mb-3 px-3 py-1.5 rounded-xl bg-slate-900/80 border border-white/10 text-xs"
-      >
+        class="w-full mb-3 px-3 py-1.5 rounded-xl bg-slate-900/95 border border-slate-700 text-[11px] focus:outline-none focus:ring-1 focus:ring-emerald-500"
+      />
 
-      <div id="lista" class="grid grid-cols-2 md:grid-cols-4 gap-3"></div>
+      <!-- GRID DE PRODUCTOS: 2 por fila en móvil, más en desktop -->
+      <div
+        id="lista"
+        class="grid grid-cols-2 md:grid-cols-4 gap-3"
+      ></div>
     </section>
   </main>
 
   <script type="module" src="./assets/js/firebase-config.js"></script>
   <script type="module" src="./assets/js/admin.js"></script>
 </body>
+</html>
