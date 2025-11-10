@@ -22,7 +22,7 @@ const $buscar = document.getElementById("buscar");
 const $vacio = document.getElementById("vacio");
 
 // 🔔 CAMBIÁ ESTE NÚMERO POR EL TUYO (formato internacional sin +)
-const WHATSAPP_PHONE = "595971000000"; // ejemplo Paraguay
+const WHATSAPP_PHONE = "595985676607"; // ejemplo Paraguay
 
 let productos = [];
 
