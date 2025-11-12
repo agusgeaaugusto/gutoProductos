@@ -14,20 +14,19 @@
         <span class="text-cyan-400">●</span> Guto <span class="text-slate-400">Catálogo</span>
       </div>
       <nav class="text-sm text-slate-300 flex items-center gap-4">
-        <a href="./index.html" class="hover:text-white">Catálogo</a>
-        <a href="./admin.html" class="hover:text-white">Admin</a>
+        <a href="./index.html" class="btn">Catálogo</a>
+        <a href="./admin.html" class="btn">Admin</a>
       </nav>
     </div>
   </header>
 
-  <main class="max-w-6xl mx-auto px-4 py-8">
-    <div class="flex items-center justify-between mb-6">
-      <h1 class="text-2xl font-bold">Productos</h1>
-      <input id="buscar" class="px-3 py-2 rounded-lg bg-white/5 border border-white/10 placeholder-slate-400"
+  <main class="max-w-6xl mx-auto px-4 py-6">
+    <div class="flex items-center gap-3">
+      <input id="buscar" class="w-full px-4 py-3 rounded-xl bg-slate-900/70 border border-white/10 outline-none"
              placeholder="Buscar por nombre..." />
     </div>
 
-    <div id="grid" class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5"></div>
+    <div id="grid" class="mt-6"></div>
     <p id="vacio" class="text-slate-400 hidden mt-8">Sin productos aún...</p>
   </main>
 

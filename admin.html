@@ -6,132 +6,94 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="./assets/css/styles.css">
 </head>
 <body class="min-h-screen bg-slate-950 text-slate-100">
 
-  <main class="min-h-screen flex items-center justify-center p-4">
+  <header class="sticky top-0 z-10 backdrop-blur bg-black/30 border-b border-white/10">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="header-brand text-xl">
+        <span class="text-cyan-400">●</span> Guto <span class="text-slate-400">Admin</span>
+      </div>
+      <nav class="text-sm text-slate-300 flex items-center gap-4">
+        <a href="./index.html" class="btn">Catálogo</a>
+        <button id="btnSalir" class="btn">Salir</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="min-h-[80vh] flex items-start justify-center p-4">
     <!-- LOGIN -->
     <section id="secLogin"
-      class="w-full max-w-sm mx-auto p-6 bg-slate-900/95 rounded-2xl border border-slate-700 shadow-2xl">
-      <h1 class="text-xl font-semibold mb-1 text-center">Panel Guto Productos</h1>
-      <p class="text-[11px] text-slate-400 mb-4 text-center">
-        Iniciá sesión para administrar el catálogo.
-      </p>
-
-      <form id="formLogin" class="flex flex-col gap-3">
-        <input
-          type="email"
-          id="emailLogin"
-          placeholder="Correo"
-          class="px-3 py-2 rounded-xl bg-slate-950/80 border border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
-          required
-        />
-        <input
-          type="password"
-          id="passLogin"
-          placeholder="Contraseña"
-          class="px-3 py-2 rounded-xl bg-slate-950/80 border border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
-          required
-        />
-        <button
-          type="submit"
-          class="mt-2 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-semibold text-sm transition"
-        >
-          Ingresar
-        </button>
-      </form>
+      class="w-full max-w-sm mx-auto p-6 bg-slate-900/95 rounded-2xl border border-slate-700 shadow-2xl hidden">
+      <h1 class="text-2xl font-bold mb-4">Acceder</h1>
+      <div class="space-y-3">
+        <input id="email" type="email" class="w-full px-4 py-3 rounded-xl bg-slate-800 border border-white/10" placeholder="Email" />
+        <input id="pass" type="password" class="w-full px-4 py-3 rounded-xl bg-slate-800 border border-white/10" placeholder="Contraseña" />
+        <button id="btnLogin" class="w-full btn justify-center bg-slate-800/60">Entrar</button>
+        <p class="text-xs text-slate-400">Solo usuarios autorizados.</p>
+      </div>
     </section>
 
-    <!-- PANEL ADMIN (se muestra solo si está logueado) -->
-    <section id="secPanel" class="hidden w-full max-w-5xl mx-auto">
-      <div class="flex items-center justify-between mb-4">
-        <h2 class="text-2xl font-semibold">Administrar productos</h2>
-        <button
-          id="btnLogout"
-          class="px-3 py-1.5 text-xs rounded-xl bg-red-500/80 hover:bg-red-400 text-white"
-        >
-          Salir
-        </button>
+    <!-- ADMIN -->
+    <section id="secAdmin" class="w-full max-w-6xl grid md:grid-cols-2 gap-6 hidden">
+      <!-- Formulario -->
+      <div class="card p-5">
+        <h2 class="text-xl font-bold mb-3">Producto</h2>
+        <form id="frmProducto" class="grid grid-cols-2 gap-4">
+          <input type="hidden" id="id" />
+          <div class="col-span-2">
+            <label class="text-sm text-slate-400">Nombre</label>
+            <input id="nombre" class="w-full px-3 py-2 rounded-xl bg-slate-800 border border-white/10" required />
+          </div>
+          <div>
+            <label class="text-sm text-slate-400">Código de Barra</label>
+            <input id="codigo_barra" class="w-full px-3 py-2 rounded-xl bg-slate-800 border border-white/10" />
+          </div>
+          <div>
+            <label class="text-sm text-slate-400">Uni/Caja</label>
+            <input id="uni_caja" type="number" min="1" value="1" class="w-full px-3 py-2 rounded-xl bg-slate-800 border border-white/10" />
+          </div>
+          <div>
+            <label class="text-sm text-slate-400">Cantidad (cajas)</label>
+            <input id="cantidad_caja" type="number" min="0" value="0" class="w-full px-3 py-2 rounded-xl bg-slate-800 border border-white/10" />
+          </div>
+          <div>
+            <label class="text-sm text-slate-400">Costo por Caja (Gs)</label>
+            <input id="costo_caja" type="number" min="0" step="0.01" value="0" class="w-full px-3 py-2 rounded-xl bg-slate-800 border border-white/10" />
+          </div>
+          <div>
+            <label class="text-sm text-slate-400">% Ganancia</label>
+            <input id="porcen" type="number" min="0" step="0.01" value="0" class="w-full px-3 py-2 rounded-xl bg-slate-800 border border-white/10" />
+          </div>
+          <div>
+            <label class="text-sm text-slate-400">Costo Unitario (auto)</label>
+            <input id="costo_unit" disabled class="w-full px-3 py-2 rounded-xl bg-slate-800/60 border border-white/10" />
+          </div>
+          <div>
+            <label class="text-sm text-slate-400">Precio Venta (auto)</label>
+            <input id="precio_venta" disabled class="w-full px-3 py-2 rounded-xl bg-slate-800/60 border border-white/10" />
+          </div>
+          <div class="col-span-2">
+            <label class="text-sm text-slate-400">Foto</label>
+            <input id="foto" type="file" accept="image/*" />
+          </div>
+          <div class="col-span-2 flex items-center gap-3">
+            <button class="btn bg-slate-800/60" id="btnGuardar" type="submit">Guardar</button>
+            <button class="btn" id="btnNuevo" type="button">Nuevo</button>
+            <button class="btn" id="btnBorrar" type="button">Borrar</button>
+          </div>
+        </form>
       </div>
 
-      <!-- FORM PRODUCTO -->
-      <form
-        id="formProducto"
-        class="grid gap-3 md:grid-cols-2 bg-slate-900/95 p-4 rounded-2xl border border-slate-700 mb-4"
-      >
-        <input type="hidden" id="docId" />
-
-        <div class="flex flex-col gap-1">
-          <label class="text-[11px] text-slate-400">Nombre</label>
-          <input
-            id="nombre"
-            required
-            class="px-2 py-1.5 rounded-lg bg-slate-950/90 border border-slate-700 text-sm focus:outline-none focus:ring-1 focus:ring-emerald-500"
-          />
+      <!-- Lista -->
+      <div class="card p-5">
+        <div class="flex items-center justify-between mb-3">
+          <h2 class="text-xl font-bold">Productos</h2>
+          <span class="badge"><span id="cant"></span> ítems</span>
         </div>
-
-        <div class="flex flex-col gap-1">
-          <label class="text-[11px] text-slate-400">Precio (Gs)</label>
-          <input
-            type="number"
-            id="precio"
-            min="0"
-            class="px-2 py-1.5 rounded-lg bg-slate-950/90 border border-slate-700 text-sm focus:outline-none focus:ring-1 focus:ring-emerald-500"
-          />
-        </div>
-
-        <div class="flex flex-col gap-1">
-          <label class="text-[11px] text-slate-400">Stock</label>
-          <input
-            type="number"
-            id="stock"
-            min="0"
-            class="px-2 py-1.5 rounded-lg bg-slate-950/90 border border-slate-700 text-sm focus:outline-none focus:ring-1 focus:ring-emerald-500"
-          />
-        </div>
-
-        <div class="flex flex-col gap-1">
-          <label class="text-[11px] text-slate-400">Imagen</label>
-          <input
-            type="file"
-            id="fileImagen"
-            accept="image/*"
-            class="text-[11px] text-slate-300"
-          />
-        </div>
-
-        <div class="md:col-span-2 flex flex-col gap-1">
-          <label class="text-[11px] text-slate-400">Descripción</label>
-          <textarea
-            id="descripcion"
-            rows="2"
-            class="px-2 py-1.5 rounded-lg bg-slate-950/90 border border-slate-700 text-sm focus:outline-none focus:ring-1 focus:ring-emerald-500"
-          ></textarea>
-        </div>
-
-        <div class="md:col-span-2 flex justify-end">
-          <button
-            type="submit"
-            class="px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black text-sm font-semibold"
-          >
-            Guardar producto
-          </button>
-        </div>
-      </form>
-
-      <!-- BUSCADOR -->
-      <input
-        type="text"
-        id="buscarAdmin"
-        placeholder="Buscar producto"
-        class="w-full mb-3 px-3 py-1.5 rounded-xl bg-slate-900/95 border border-slate-700 text-[11px] focus:outline-none focus:ring-1 focus:ring-emerald-500"
-      />
-
-      <!-- GRID DE PRODUCTOS: 2 por fila en móvil, más en desktop -->
-      <div
-        id="lista"
-        class="grid grid-cols-2 md:grid-cols-4 gap-3"
-      ></div>
+        <div id="lista" class="grid grid-cols-2 md:grid-cols-3 gap-3"></div>
+      </div>
     </section>
   </main>
 
